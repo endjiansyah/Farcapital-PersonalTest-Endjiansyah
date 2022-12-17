@@ -11,7 +11,7 @@
                 <th>Gender</th>
                 <th>Tanggal Lahir</th>
                 <th>Alamat</th>
-                <th>Status</th>
+                <th>Status kriteria</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -29,8 +29,15 @@
                     </td>
                     <td>{{ $item->tanggal_lahir }}</td>
                     <td>{{ $item->alamat }}</td>
-                    <td>kosong sek</td>
                     <td>
+                        @if ($item->layak === true)
+                            Layak
+                        @else
+                            tidak lolos
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('pendonor.show', ['pendonor' => $item]) }}">Detail</a>
                         <a href="{{ route('pendonor.edit', ['pendonor' => $item]) }}">Edit</a>
 
                         <form action="{{ route('pendonor.destroy', ['pendonor' => $item]) }}" method="post">

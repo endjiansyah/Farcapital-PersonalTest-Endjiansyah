@@ -19,6 +19,16 @@ return new class extends Migration
             $table->integer('gender');
             $table->date('tanggal_lahir');
             $table->text('alamat');
+            $table->boolean('layak')->default(false);
+            // -------
+            $table->boolean('izinortu')->default(false);
+            $table->float('beratbadan')->nullable();
+            $table->float('temperatur')->nullable();
+            $table->float('sistole')->nullable();
+            $table->float('diastole')->nullable();
+            $table->integer('nadi')->nullable();
+            $table->integer('hemoglobin')->nullable();
+            // -------
             $table->timestamps();
         });
     }

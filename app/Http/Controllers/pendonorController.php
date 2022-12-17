@@ -35,32 +35,26 @@ class pendonorController extends Controller
             'gender' => 'required',
             'tanggal_lahir' => 'required',
             'alamat' => 'required',
+            'layak' => 'required',
         ];
         $payload = $request->validate($validasi);
         Pendonor::create($payload);
         return redirect()->route('pendonor.list');
     }
 
-    public function kelayakan(Request $request)
-    {
-        # code...
-    }
-
     public function edit(Pendonor $pendonor)
     {
         return view('pendonor.edit', ['pendonor' => $pendonor]);
     }
+    public function kesehatan(Pendonor $pendonor)
+    {
+        return view('pendonor.kesehatan', ['pendonor' => $pendonor]);
+    }
 
     public function update(Request $request, Pendonor $pendonor)
     {
-        $validasi = [
-            'nama' => 'required',
-            'gender' => 'required',
-            'tanggal_lahir' => 'required',
-            'alamat' => 'required',
-        ];
-        $payload = $request->validate($validasi);
-        $pendonor->update($payload);
+        $pendonor->fill($request->all());
+        $pendonor->save();
         return redirect()->route('pendonor.list');
     }
 

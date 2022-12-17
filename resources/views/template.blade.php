@@ -9,6 +9,16 @@
 </head>
 
 <body>
+    <section id="atas">
+        <a href="{{ route('pendonor.list') }}">[List Pendonor]</a>
+        @if (session()->get('logged', false))
+            <a href="{{ route('admin.list') }}">[List admin]</a>
+            <a href="{{ route('logout') }}">[Logout]</a>
+        @else
+            <a href="{{ route('login') }}">[Login]</a>
+        @endif
+        <hr>
+    </section>
     @yield('content')
 </body>
 
