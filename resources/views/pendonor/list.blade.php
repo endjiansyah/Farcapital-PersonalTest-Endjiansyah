@@ -12,6 +12,7 @@
                 <th>Tanggal Lahir</th>
                 <th>Alamat</th>
                 <th>Status kriteria</th>
+                <th>Donor</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -37,6 +38,24 @@
                         @endif
                     </td>
                     <td>
+                        @if ($item->izinortu === true &&
+                            $item->beratbadan >= 45 &&
+                            $item->temperatur > 36 &&
+                            $item->temperatur < 38 &&
+                            $item->sistole > 110 &&
+                            $item->sistole < 160 &&
+                            $item->diastole > 70 &&
+                            $item->temperatur < 100 &&
+                            $item->nadi > 50 &&
+                            $item->nadi > 100 &&
+                            $item->hemoglobin > 12)
+                            Boleh
+                        @else
+                            tidak Boleh
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('pendonor.kesehatan', ['pendonor' => $item]) }}">kesehatan</a>
                         <a href="{{ route('pendonor.show', ['pendonor' => $item]) }}">Detail</a>
                         <a href="{{ route('pendonor.edit', ['pendonor' => $item]) }}">Edit</a>
 
