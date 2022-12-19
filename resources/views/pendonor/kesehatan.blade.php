@@ -9,16 +9,16 @@
         @method('put')
         <label>mendapat izin ortu? :</label>
         <input type="radio" name="izinortu" id="ya" value="TRUE"
-            {{ $pendonor->izinortu == 1 ? 'checked' : '' }}><label for="ya">ya</label>
+            {{ $pendonor->izinortu === true ? 'checked' : '' }}><label for="ya">ya</label>
         <input type="radio" name="izinortu" id="tidak" value="FALSE"
-            {{ $pendonor->izinortu == 2 ? 'checked' : '' }}><label for="tidak">tidak</label>
+            {{ $pendonor->izinortu === false ? 'checked' : '' }}><label for="tidak">tidak</label>
         <br>
         <label for="bb">berat badan :</label>
         <input type="number" name="beratbadan" id="bb" required
             value="{{ old('beratbadan', $pendonor->beratbadan) }}">
         <br>
         <label for="temperatur">Temperatur :</label>
-        <input type="number" name="temperatur" id="temperatur" required
+        <input type="text" name="temperatur" id="temperatur" required
             value="{{ old('temperatur', $pendonor->temperatur) }}">
         <br>
         <label for="sistole">sistole :</label>

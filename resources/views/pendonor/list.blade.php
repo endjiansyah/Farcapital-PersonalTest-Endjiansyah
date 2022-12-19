@@ -18,7 +18,12 @@
         </thead>
         <tbody>
             @foreach ($pendonor as $item)
-                <tr>
+                <?php if ($item->beratbadan == '' || $item->temperatur == '' || $item->sistole == '' || $item->diastole == '' || $item->temperatur == '' || $item->nadi == '' || $item->hemoglobin == '') {
+                    $input = 0;
+                } else {
+                    $input = 1;
+                } ?>
+                <tr style="background :{{ $input == 0 ? '#ff8' : '' }}">
                     <td>{{ $item->created_at }}</td>
                     <td>{{ $item->nama }}</td>
                     <td>
@@ -38,7 +43,10 @@
                         @endif
                     </td>
                     <td>
-                        @if ($item->izinortu === true &&
+                        <?php $years = now()->year - date('Y', strtotime($item->tanggal_lahir)); ?>
+                        @if ($years < 17 &&
+                            $years > 60 &&
+                            $item->izinortu === true &&
                             $item->beratbadan >= 45 &&
                             $item->temperatur > 36 &&
                             $item->temperatur < 38 &&
@@ -68,5 +76,16 @@
                 </tr>
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <th rowspan="2" colspan="2">Keterangan warna:</th>
+                <th>.</th>
+                <th colspan="5">Sudah Input Kesehatan</th>
+            </tr>
+            <tr>
+                <th style="background: #ff8">.</th>
+                <th colspan="5">Belum Input Kesehatan</th>
+            </tr>
+        </tfoot>
     </table>
 @endsection

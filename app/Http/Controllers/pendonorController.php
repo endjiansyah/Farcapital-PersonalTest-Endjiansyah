@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pendonor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class pendonorController extends Controller
@@ -31,7 +32,7 @@ class pendonorController extends Controller
     {
 
         $validasi = [
-            'nama' => 'required',
+            'nama' => 'required|min:5',
             'gender' => 'required',
             'tanggal_lahir' => 'required',
             'alamat' => 'required',

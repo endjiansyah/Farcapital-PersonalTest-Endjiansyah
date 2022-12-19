@@ -28,8 +28,8 @@ Route::prefix("pendonor")
         Route::get('/show/{pendonor}', 'show')->name('show')->middleware(['withAuth']);
         Route::get('/edit/{pendonor}', 'edit')->name('edit')->middleware(['withAuth']);
         Route::get('/kesehatan/{pendonor}', 'kesehatan')->name('kesehatan')->middleware(['withAuth']);
-        Route::get('/create', 'create')->name('create')->middleware(['withAuth']);
-        Route::post('/store', 'store')->name('store')->middleware(['withAuth']);
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
         Route::put('/update/{pendonor}', 'update')->name('update')->middleware(['withAuth']);
         Route::delete('/destroy/{pendonor}', 'destroy')->name('destroy')->middleware(['withAuth']);
     });
