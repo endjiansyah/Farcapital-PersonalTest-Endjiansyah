@@ -27,6 +27,7 @@ Route::prefix("pendonor")
         Route::get("/", "index")->name("list");
         Route::get('/show/{pendonor}', 'show')->name('show')->middleware(['withAuth']);
         Route::get('/edit/{pendonor}', 'edit')->name('edit')->middleware(['withAuth']);
+        Route::get('/pengecekan/{pendonor}', 'pengecekan')->name('pengecekan')->middleware(['withAuth']);
         Route::get('/kesehatan/{pendonor}', 'kesehatan')->name('kesehatan')->middleware(['withAuth']);
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
